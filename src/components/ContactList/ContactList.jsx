@@ -1,15 +1,11 @@
 import s from './ContactList.module.css';
 import ContactItem from '../ContactItem/ContactItem';
-
+import { useSelector } from 'react-redux';
 import { useGetContactsApiQuery } from 'redux/contactsApi';
-
-const getFilterValue = () => {
-  return 'yourFilterValue';
-};
 
 const ContactList = () => {
   const { data, isLoading } = useGetContactsApiQuery();
-  const filter = getFilterValue();
+  const filter = useSelector(state => state.filter.value);
 
   console.log(data);
 
