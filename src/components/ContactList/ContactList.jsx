@@ -5,7 +5,7 @@ import { useGetContactsApiQuery } from 'redux/contactsApi';
 
 const ContactList = () => {
   const { data, isLoading } = useGetContactsApiQuery();
-  const filter = useSelector(selectFilter);
+  const filter = useSelector(state => state.filter.value);
 
   console.log(data);
 
