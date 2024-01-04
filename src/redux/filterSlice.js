@@ -12,7 +12,7 @@ export const filterSlice = createSlice({
   },
 });
 
-export const { filterContact } = filterSlice.actions;
+export const  filterContact  = filterSlice.actions;
 
 export const onFilterChange = state => state.filter.filter;
 export default filterSlice.reducer;
