@@ -3,10 +3,10 @@ import s from './ContactItem.module.css';
 import PropTypes from 'prop-types';
 import { useDeleteContactMutation } from 'redux/contactsApi';
 
-function ContactItem({ id, name, phone }) {
+const ContactItem = ({ id, name, phone }) => {
   const [deleteContact] = useDeleteContactMutation();
 
-  const handleDeleteContact = async (id) => {
+  const handleDeleteContact = async id => {
     await deleteContact(id).unwrap();
   };
 
@@ -25,7 +25,7 @@ function ContactItem({ id, name, phone }) {
       </button>
     </li>
   );
-}
+};
 
 ContactItem.propTypes = {
   id: PropTypes.string.isRequired,

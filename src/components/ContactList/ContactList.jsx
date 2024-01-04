@@ -2,9 +2,9 @@ import s from './ContactList.module.css';
 import ContactItem from '../ContactItem/ContactItem';
 import { useSelector } from 'react-redux';
 import { useGetContactsApiQuery } from 'redux/contactsApi';
-import selectFilter from 'redux/selectors';
+import selectFilter from 'redux/filterSlice';
 
-function ContactList() {
+const ContactList = () => {
   const { data, isLoading } = useGetContactsApiQuery();
   const filter = useSelector(selectFilter);
 
@@ -14,7 +14,8 @@ function ContactList() {
     const normalizeFilter = filter.toLowerCase();
     return (
       data &&
-      data.filter(contact => contact.name.toLowerCase().includes(normalizeFilter)
+      data.filter(contact =>
+        contact.name.toLowerCase().includes(normalizeFilter)
       )
     );
   };
@@ -24,22 +25,25 @@ function ContactList() {
   return (
     <>
       {isLoading && <p>Loading...</p>}
-      {<ul className={s.list}>
-        {!isLoading && data && filterEl.length > 0 ? (
-          filterEl.map(({ id, name, phone }) => (
-            <ContactItem
-              key={id}
-              data={filterEl}
-              id={id}
-              name={name}
-              phone={phone} />
-          ))
-        ) : (
-          <p className={s.text}>No contacts</p>
-        )}
-      </ul>}
+      {
+        <ul className={s.list}>
+          {!isLoading && data && filterEl.length > 0 ? (
+            filterEl.map(({ id, name, phone }) => (
+              <ContactItem
+                key={id}
+                data={filterEl}
+                id={id}
+                name={name}
+                phone={phone}
+              />
+            ))
+          ) : (
+            <p className={s.text}>No contacts</p>
+          )}
+        </ul>
+      }
     </>
   );
-}
+};
 
 export default ContactList;
