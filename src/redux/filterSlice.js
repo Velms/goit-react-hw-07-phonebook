@@ -12,7 +12,5 @@ export const filterSlice = createSlice({
   },
 });
 
-export const  filterContact  = filterSlice.actions;
-
-export const onFilterChange = state => state.filter.filter;
+export const { filterContact } = filterSlice.actions;
 export default filterSlice.reducer;
