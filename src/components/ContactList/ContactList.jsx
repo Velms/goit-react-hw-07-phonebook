@@ -2,7 +2,7 @@ import s from './ContactList.module.css';
 import ContactItem from '../ContactItem/ContactItem';
 import { useSelector } from 'react-redux';
 import { useGetContactsApiQuery } from 'redux/contactsApi';
-import selectFilter from 'redux/filterSlice';
+import {selectFilter} from 'redux/filterSlice';
 
 const ContactList = () => {
   const { data, isLoading } = useGetContactsApiQuery();
